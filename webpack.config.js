@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { resolve } = require("path");
 const modeConfiguration = env => require(`./build-utils/webpack.${env}`)(env);
 
 module.exports = ({ mode } = { mode: "production" }) => {
@@ -35,7 +36,17 @@ module.exports = ({ mode } = { mode: "production" }) => {
             }),
             new webpack.HotModuleReplacementPlugin()
         ],
+        resolve: {
+            fallback: {
+                crypto: require.resolve('crypto-browserify'),
+                stream: require.resolve("stream-browserify"),
+                path: require.resolve("path-browserify")
+            },
+        },
+
+
     },
         modeConfiguration(mode)
     );
+
 };

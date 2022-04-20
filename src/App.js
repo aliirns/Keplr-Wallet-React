@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
+import Connect from "./components/connect";
 import './sass/app.scss';
 
 class App extends Component {
@@ -15,9 +16,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>I'm configuring setting up Webpack!!!</h1>
-                <p>{`The count now is: ${this.state.counter}`}</p>
-                <button onClick={this.handleClick}>Click me</button>
+                <Connect />
             </div>
         );
     }
